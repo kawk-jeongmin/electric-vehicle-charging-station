@@ -38,21 +38,14 @@
     <p>${errorMessage}</p>
 </c:if>
 
-<c:if test="${not empty searchResult}">
-    <table>
-        <thead>
-            <tr>
-                <th>Location Name</th>
-            </tr>
-        </thead>
+<c:if test="${not empty locInfoList}">
+    
         <tbody>
-            <c:forEach var="locName" items="${searchResult}">
-                <tr>
-                    <td>${locName}</td>
-                </tr>
-            </c:forEach>
+            <c:forEach var="locInfo" items="${locInfoList}">
+            ${locInfo.loc_name} <br>
+            ${locInfo.address} <br> <br>
+        </c:forEach>
         </tbody>
-    </table>
 </c:if>
    </body>
 </html>

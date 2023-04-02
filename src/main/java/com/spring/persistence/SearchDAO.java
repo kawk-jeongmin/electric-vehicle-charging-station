@@ -2,8 +2,10 @@ package com.spring.persistence;
 
 import java.util.List;
 
+import com.spring.domain.SearchVO;
+
 public interface SearchDAO {
 	
-	public List<String> listSearch(String keyword);
+	public List<SearchVO> listSearch(String keyword);
 
 }

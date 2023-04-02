@@ -14,7 +14,7 @@ public class SearchService {
 	@Autowired
 	private SearchDAO searchDAO;
 	
-	public List<String> listSearch(String keyword) {
+	public List<SearchVO> listSearch(String keyword) {
 	    return searchDAO.listSearch(keyword);
 	  }
 
