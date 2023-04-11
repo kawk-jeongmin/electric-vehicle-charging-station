@@ -43,7 +43,13 @@
         <tbody>
             <c:forEach var="locInfo" items="${locInfoList}">
             ${locInfo.loc_name} <br>
-            ${locInfo.address} <br> <br>
+            ${locInfo.address} <br>
+            <form method="post" action="${pageContext.request.contextPath}/reserve" accept-charset="UTF-8">
+  				<input type="hidden" name="loc_id" value="${locInfo.loc_id}" />
+  				<input type="hidden" name="loc_name" value="${locInfo.loc_name}" />
+  				<input type="hidden" name="address" value="${locInfo.address}" />
+  				<input type="submit" value="예약하기" />
+			</form>
         </c:forEach>
         </tbody>
 </c:if>

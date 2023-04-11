@@ -29,6 +29,7 @@ public class SearchController {
       } else {
 	    for(SearchVO searchVO : searchResult) {
 	    	Map<String, Object> locInfo = new HashMap<>();
+	    	locInfo.put("loc_id", searchVO.getLoc_id());
 	    	locInfo.put("loc_name", searchVO.getLoc_name());
 	    	locInfo.put("address", searchVO.getAddress());
 	    	locInfoList.add(locInfo);
