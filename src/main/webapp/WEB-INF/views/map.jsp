@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Map Search</h1>
+    <form action="${pageContext.request.contextPath}/myInfo" method="post">
+    <input type="submit" value="예약정보 보기"/>
+    </form>
 <form action="${pageContext.request.contextPath}/search" method="get">
     <label for="keyword">Keyword:</label>
     <input type="text" id="keyword" name="keyword">

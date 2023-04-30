@@ -28,4 +28,5 @@
 	   
 	   <bean id="searchService" class="com.spring.service.SearchService" />
 	   <bean id="reserveService" class="com.spring.service.ReserveService" />
+	   <bean id="InfoServiceImpl" class="com.spring.service.InfoServiceImpl" />
 </beans>

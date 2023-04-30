@@ -23,6 +23,7 @@ public class ReserveController {
 	public String reserve(@RequestParam("loc_id") int loc_id, 
 	                        @RequestParam("loc_name") String loc_name,
 	                        @RequestParam("address") String address, Model model) {
+        
 	    model.addAttribute("loc_id", loc_id);
 	    model.addAttribute("loc_name", loc_name);
 	    model.addAttribute("address", address);

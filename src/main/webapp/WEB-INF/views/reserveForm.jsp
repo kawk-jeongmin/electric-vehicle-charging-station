@@ -19,10 +19,24 @@
         <option value="AC">AC</option>
         <option value="DC">DC</option>
     </select><br>
+       
     <label for="reserve_time">예약시간:</label>
-    <input type="datetime-local" id="reserve_time" name="reserve_time" 
-    required value="${reserve_time.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)}" /><br>
-    <input type="submit" value="예약하기" />
+	<input type="datetime-local" id="reserve_time" name="reserve_time"
+       required min="${LocalDateTime.now().withHour(9).withMinute(0).withSecond(0).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)}"
+       max="${LocalDateTime.now().plusMonths(1).withHour(21).withMinute(0).withSecond(0).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)}"
+       step="3600"
+       value="${LocalDateTime.now().withMinute(0).withSecond(0).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)}"/><br>
+       
+	<input type="submit" value="예약하기"
+       onclick="if (new Date(document.getElementById('reserve_time').value).getTime() < Date.now()) {
+           alert('지난 날짜는 예약할 수 없습니다.');
+           return false;
+       } else if (new Date(document.getElementById('reserve_time').value).getHours() 
+       < 9 || new Date(document.getElementById('reserve_time').value).getHours() >= 21) {
+           alert('9시부터 21시까지만 예약 가능합니다.');
+           return false;
+       }"/>
+       
 </form>
 </body>
 </html>
