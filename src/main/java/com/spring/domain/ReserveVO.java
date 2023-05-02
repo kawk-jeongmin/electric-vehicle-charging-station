@@ -1,6 +1,6 @@
 package com.spring.domain;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +21,7 @@ public class ReserveVO {
 	private String user_name;
 	private String user_phone;
 	private String charge_type;
-	private LocalDateTime reserve_time;
+	private Date reserve_time;
 	
 	public int getReserve_id() {
 		return reserve_id;
@@ -66,10 +66,10 @@ public class ReserveVO {
 		this.charge_type = charge_type;
 	}
 	
-	public LocalDateTime getReserve_time() {
+	public Date getReserve_time() {
 		return reserve_time;
 	}
-	public void setReserve_time(LocalDateTime reserve_time) {
+	public void setReserve_time(Date reserve_time) {
 		this.reserve_time = reserve_time;
 	}
 	@Override

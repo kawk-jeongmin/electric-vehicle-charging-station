@@ -19,7 +19,7 @@
         <option value="AC">AC</option>
         <option value="DC">DC</option>
     </select><br>
-       
+    
     <label for="reserve_time">예약시간:</label>
 	<input type="datetime-local" id="reserve_time" name="reserve_time"
        required min="${LocalDateTime.now().withHour(9).withMinute(0).withSecond(0).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)}"

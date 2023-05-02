@@ -14,7 +14,7 @@
     <p>* 전화번호는 하이픈 없이 입력해주세요</p>
     <button type="submit">Search</button>
 </form>
-<h2>Search Result</h2>
+<h2>검색 결과</h2>
 <c:if test="${not empty myInfoList}">
     <table>
         <thead>
@@ -39,5 +39,10 @@
         </tbody>
     </table>
 </c:if>
+
+<c:if test="${empty myInfoList}">
+    <p>${errorMessage}</p>
+</c:if>
+
 </body>
 </html>

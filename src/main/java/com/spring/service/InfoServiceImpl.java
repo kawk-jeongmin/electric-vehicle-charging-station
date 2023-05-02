@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,9 @@ public class InfoServiceImpl implements InfoService{
 	    List<ReserveVO> searchResult = infoDAO.myInfoSearch(reserve_name, reserve_phone);
 	    for (ReserveVO reserveVO : searchResult) {
 	        Map<String, Object> myInfo = new HashMap<>();
-	        myInfo.put("reserve_time", reserveVO.getReserve_time());
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	        String reserveTime = sdf.format(reserveVO.getReserve_time());
+	        myInfo.put("reserve_time", reserveTime);
 	        myInfo.put("user_name", reserveVO.getUser_name());
 	        myInfo.put("user_phone", reserveVO.getUser_phone());
 	        myInfo.put("address", reserveVO.getAddress());
