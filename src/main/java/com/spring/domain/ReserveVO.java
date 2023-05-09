@@ -1,12 +1,15 @@
 package com.spring.domain;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "reservation")
@@ -21,8 +24,12 @@ public class ReserveVO {
 	private String user_name;
 	private String user_phone;
 	private String charge_type;
-	private Date reserve_time;
 	
+	@Column(columnDefinition = "LOCALDATE")
+	private Date reserve_date;
+	
+	@Column(columnDefinition = "LOCALTIME")
+	private Time reserve_time;
 	public int getReserve_id() {
 		return reserve_id;
 	}
@@ -65,21 +72,24 @@ public class ReserveVO {
 	public void setCharge_type(String charge_type) {
 		this.charge_type = charge_type;
 	}
-	
-	public Date getReserve_time() {
+	public Date getReserve_date() {
+		return reserve_date;
+	}
+	public void setReserve_date(Date reserve_date) {
+		this.reserve_date = reserve_date;
+	}
+	public Time getReserve_time() {
 		return reserve_time;
 	}
-	public void setReserve_time(Date reserve_time) {
+	public void setReserve_time(Time reserve_time) {
 		this.reserve_time = reserve_time;
 	}
 	@Override
 	public String toString() {
 		return "ReserveVO [reserve_id=" + reserve_id + ", loc_id=" + loc_id + ", loc_name=" + loc_name + ", address="
 				+ address + ", user_name=" + user_name + ", user_phone=" + user_phone + ", charge_type=" + charge_type
-				+ ", reserve_time=" + reserve_time + "]";
+				+ ", reserve_date=" + reserve_date + ", reserve_time=" + reserve_time + "]";
 	}
-	
-	
 	
 	
 

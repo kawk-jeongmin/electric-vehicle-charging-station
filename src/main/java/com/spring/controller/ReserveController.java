@@ -1,13 +1,13 @@
 package com.spring.controller;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,22 +33,48 @@ public class ReserveController {
 	    return "reserveForm";
 	  }
 	
-	//reserveForm에서 받아온 데이터를 db에 저장하고 reserve로 이동
 	@PostMapping("/reserves")
-	public String reserve(@ModelAttribute ReserveVO reserveVO, Model model) {
-		Date date = reserveVO.getReserve_time();
-		LocalDateTime reserveTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
-	    reserveService.insertReservation(reserveVO);
-	    model.addAttribute("loc_id", reserveVO.getLoc_id());
-        model.addAttribute("loc_name", reserveVO.getLoc_name());
-        model.addAttribute("address", reserveVO.getAddress());
-        model.addAttribute("user_name", reserveVO.getUser_name());
-        model.addAttribute("user_phone", reserveVO.getUser_phone());
-        model.addAttribute("charge_type", reserveVO.getCharge_type());
-        model.addAttribute("reserve_time", reserveTime);
+    public String reserve(@RequestParam("loc_id") int loc_id,
+                          @RequestParam("loc_name") String loc_name,
+                          @RequestParam("address") String address,
+                          @RequestParam("user_name") String user_name,
+                          @RequestParam("user_phone") String user_phone,
+                          @RequestParam("charge_type") String charge_type,
+                          @RequestParam("reserve_date") String reserve_date,
+                          @RequestParam("reserve_time") String reserve_time,
+                          Model model) {
+		
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ISO_DATE;
+		DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_TIME;
 
-	    return "reserve";
-	}
-	
+		LocalDate parsedDate = LocalDate.parse(reserve_date, dateFormatter);
+		LocalTime parsedTime = LocalTime.parse(reserve_time, timeFormatter);
+
+		Date date = java.sql.Date.valueOf(parsedDate);
+		Time time = java.sql.Time.valueOf(parsedTime);
+		
+        ReserveVO reserveVO = new ReserveVO();
+        reserveVO.setLoc_id(loc_id);
+        reserveVO.setLoc_name(loc_name);
+        reserveVO.setAddress(address);
+        reserveVO.setUser_name(user_name);
+        reserveVO.setUser_phone(user_phone);
+        reserveVO.setCharge_type(charge_type);
+        reserveVO.setReserve_date(date);
+        reserveVO.setReserve_time(time);
+        
+        reserveService.insertReservation(reserveVO);
+        
+        model.addAttribute("loc_id", loc_id);
+        model.addAttribute("loc_name", loc_name);
+        model.addAttribute("address", address);
+        model.addAttribute("user_name", user_name);
+        model.addAttribute("user_phone", user_phone);
+        model.addAttribute("charge_type", charge_type);
+        model.addAttribute("reserve_date", date);
+        model.addAttribute("reserve_time", time);
+
+        return "reserve";
+    }
 
 }

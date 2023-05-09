@@ -19,6 +19,7 @@
     <table>
         <thead>
             <tr>
+           		<th>예약 날짜</th>
                 <th>예약 시간</th>
                 <th>주소</th>
                 <th>예약자 이름</th>
@@ -29,6 +30,7 @@
         <tbody>
             <c:forEach var="myInfo" items="${myInfoList}">
                 <tr>
+                	<td>${myInfo.reserve_date}</td>
                     <td>${myInfo.reserve_time}</td>
                     <td>${myInfo.address}</td>
                     <td>${myInfo.user_name}</td>

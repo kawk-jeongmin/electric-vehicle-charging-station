@@ -8,7 +8,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-			<property value="jdbc:mysql://127.0.0.1:3306/charge?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;useSSL=false" name="url"/>
+			<property value="jdbc:mysql://127.0.0.1:3306/charge?serverTimezone=Asia/Seoul&amp;characterEncoding=UTF-8&amp;useSSL=false" name="url"/>
 			<property name="username" value="root"></property>
 			<property name="password" value="Kjm0408^^"></property>
 		</bean>	

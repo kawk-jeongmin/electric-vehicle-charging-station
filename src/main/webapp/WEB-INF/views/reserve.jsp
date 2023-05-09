@@ -14,6 +14,7 @@
     <p>예약자 이름: ${user_name}</p>
     <p>예약자 전화번호: ${user_phone}</p>
     <p>결제 방식: ${charge_type}</p>
+    <p>예약 날짜: ${reserve_date}</p>
     <p>예약 시간: ${reserve_time}</p>
 </body>
 </html>

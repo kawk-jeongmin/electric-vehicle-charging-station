@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SELECT * FROM location WHERE address LIKE CONCAT('%', #{keyword}, '%')
 	</select>
 	
-	<select id="myInfoSearch" parameterType="map" resultType="ReserveVO">
+	<select id="myInfoSearch" parameterType="String" resultType="ReserveVO">
 	SELECT * FROM reservation
   	WHERE user_name = #{reserve_name}
     AND user_phone = #{reserve_phone}

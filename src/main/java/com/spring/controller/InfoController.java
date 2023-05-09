@@ -26,11 +26,14 @@ public class InfoController {
 	@GetMapping("/myInfoSearch")
 	public String search(@RequestParam("reserve_name") String reserve_name, @RequestParam("reserve_phone") String reserve_phone, Model model) {
 		List<Map<String, Object>> myInfoList = infoService.myInfoSearch(reserve_name, reserve_phone);
+	    
 		if (myInfoList.isEmpty()) {
 			model.addAttribute("errorMessage", "해당하는 정보가 없습니다.");
-		} else {
+		}
+				else {
 			model.addAttribute("myInfoList", myInfoList);
 		}
+		
 		return "myInfo";
 	}
 }

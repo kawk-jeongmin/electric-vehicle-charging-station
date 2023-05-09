@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.spring.mapper.ReserveMapper">
 
 <insert id="insertReservation">
-	INSERT INTO reservation (loc_id, loc_name, address, user_name, user_phone, charge_type, reserve_time)
-	VALUES (#{loc_id}, #{loc_name}, #{address}, #{user_name}, #{user_phone}, #{charge_type}, #{reserve_time})
+	INSERT INTO reservation (loc_id, loc_name, address, user_name, user_phone, charge_type, reserve_date, reserve_time)
+	VALUES (#{loc_id}, #{loc_name}, #{address}, #{user_name}, #{user_phone}, #{charge_type}, #{reserve_date}, #{reserve_time})
 </insert>
     
 </mapper>

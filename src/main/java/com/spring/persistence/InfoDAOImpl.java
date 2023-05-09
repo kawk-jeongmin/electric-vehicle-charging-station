@@ -28,6 +28,7 @@ public class InfoDAOImpl implements InfoDAO{
 	    if (reserve_phone != null && !reserve_phone.isEmpty()) {
 	    	parameter.put("reserve_phone", reserve_phone);
 	    }
+	    
 	    return sqlSession.selectList(namespace + ".myInfoSearch", parameter);
 	}
 
