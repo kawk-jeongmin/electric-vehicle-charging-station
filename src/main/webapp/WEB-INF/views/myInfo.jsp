@@ -15,36 +15,119 @@
     <button type="submit">Search</button>
 </form>
 <h2>검색 결과</h2>
+                   
 <c:if test="${not empty myInfoList}">
-    <table>
-        <thead>
+    <c:set var="hasPast" value="false" />
+    <c:set var="hasFuture" value="false" />
+    <c:set var="hasCurrent" value="false" />
+    
+    <c:forEach var="myInfo" items="${myInfoList}">
+        <c:choose> <!-- switch문에 해당 -->
+            <c:when test="${myInfo.status eq '과거'}"> <!-- case문에 해당 -->
+                <c:set var="hasPast" value="true" />
+            </c:when>
+            <c:when test="${myInfo.status eq '미래'}">
+                <c:set var="hasFuture" value="true" />
+            </c:when>
+            <c:when test="${myInfo.status eq '현재'}">
+                <c:set var="hasCurrent" value="true" />
+            </c:when>
+        </c:choose>
+    </c:forEach>
+    
+    <c:if test="${hasCurrent}">
+        <h2>사용중</h2>
+        <table>
             <tr>
-           		<th>예약 날짜</th>
-                <th>예약 시간</th>
-                <th>주소</th>
-                <th>예약자 이름</th>
-                <th>예약자 전화번호</th>
-                <th>충전기 타입</th>
+                <th>User Name</th>
+                <th>User Phone</th>
+                <th>Address</th>
+                <th>Charge Type</th>
+                <th>Reserve Date</th>
+                <th>Reserve Time</th>
+                <th>Status</th>
             </tr>
-        </thead>
-        <tbody>
             <c:forEach var="myInfo" items="${myInfoList}">
-                <tr>
-                	<td>${myInfo.reserve_date}</td>
-                    <td>${myInfo.reserve_time}</td>
-                    <td>${myInfo.address}</td>
-                    <td>${myInfo.user_name}</td>
-                    <td>${myInfo.user_phone}</td>
-                    <td>${myInfo.charge_type}</td>
-                </tr>
+                <c:if test="${myInfo.status eq '현재'}">
+                    <tr>
+                        <td>${myInfo['user_name']}</td>
+                        <td>${myInfo['user_phone']}</td>
+                        <td>${myInfo['address']}</td>
+                        <td>${myInfo['charge_type']}</td>
+                        <td>${myInfo['reserve_date']}</td>
+                        <td>${myInfo['reserve_time']}</td>
+                        <td>사용중</td>
+                    </tr>
+                </c:if>
             </c:forEach>
-        </tbody>
-    </table>
+        </table>
+    </c:if>
+    
+    <c:if test="${hasFuture}">
+        <h2>사용 예정</h2>
+        <table>
+            <tr>
+                <th>User Name</th>
+                <th>User Phone</th>
+                <th>Address</th>
+                <th>Charge Type</th>
+                <th>Reserve Date</th>
+                <th>Reserve Time</th>
+                <th>Status</th>
+            </tr>
+            <c:forEach var="myInfo" items="${myInfoList}">
+                <c:if test="${myInfo.status eq '미래'}">
+                    <tr>
+                        <td>${myInfo['user_name']}</td>
+                        <td>${myInfo['user_phone']}</td>
+                        <td>${myInfo['address']}</td>
+                        <td>${myInfo['charge_type']}</td>
+                        <td>${myInfo['reserve_date']}</td>
+                        <td>${myInfo['reserve_time']}</td>
+                        <td>사용 예정</td>
+                    </tr>
+                </c:if>
+            </c:forEach>
+        </table>
+    </c:if>
+    
+    <c:if test="${hasPast}">
+        <h2>사용 완료</h2>
+        <table>
+            <tr>
+                <th>User Name</th>
+                <th>User Phone</th>
+                <th>Address</th>
+                <th>Charge Type</th>
+                <th>Reserve Date</th>
+                <th>Reserve Time</th>
+                <th>Status</th>
+            </tr>
+            <c:forEach var="myInfo" items="${myInfoList}">
+                <c:if test="${myInfo.status eq '과거'}">
+                    <tr>
+                        <td>${myInfo['user_name']}</td>
+                        <td>${myInfo['user_phone']}</td>
+                        <td>${myInfo['address']}</td>
+                        <td>${myInfo['charge_type']}</td>
+                        <td>${myInfo['reserve_date']}</td>
+                        <td>${myInfo['reserve_time']}</td>
+                        <td>사용 완료</td>
+                    </tr>
+                </c:if>
+            </c:forEach>
+        </table>
+    </c:if>
 </c:if>
 
 <c:if test="${empty myInfoList}">
     <p>${errorMessage}</p>
 </c:if>
 
+<form action="${pageContext.request.contextPath}/map">
+<div class="box-footer">
+<button type="submit" class="btn btn-primary">홈으로 돌아가기</button>
+</div>
+</form>
 </body>
 </html>

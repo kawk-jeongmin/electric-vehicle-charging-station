@@ -30,7 +30,7 @@ public class InfoController {
 		if (myInfoList.isEmpty()) {
 			model.addAttribute("errorMessage", "해당하는 정보가 없습니다.");
 		}
-				else {
+		else {
 			model.addAttribute("myInfoList", myInfoList);
 		}
 		
