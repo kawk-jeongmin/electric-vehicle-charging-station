@@ -18,5 +18,6 @@ public class ReserveDAOImpl implements ReserveDAO{
     public void insertReservation(ReserveVO reserveVO) {
         sqlSession.insert(namespace + ".insertReservation", reserveVO);
     }
+    
 
 }

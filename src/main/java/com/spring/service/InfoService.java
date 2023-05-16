@@ -6,5 +6,7 @@ import java.util.Map;
 public interface InfoService{
 	
 	public List<Map<String, Object>> myInfoSearch(String reserve_name, String reserve_phone);
+	
+	public void deleteReservation(int reserve_id);
 
 }

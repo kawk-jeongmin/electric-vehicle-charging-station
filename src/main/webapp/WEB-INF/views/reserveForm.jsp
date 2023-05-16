@@ -16,10 +16,16 @@
     <input type="text" id="user_phone" name="user_phone" required /><br>
     
     <label for="charge_type">충전 방법:</label>
-    <select id="charge_type" name="charge_type">
-        <option value="AC">AC</option>
-        <option value="DC">DC</option>
-    </select><br>
+     <!-- <div class ="form-group" style="text-align: center;"> -->
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-primary active">
+                                <input type="radio" name="charge_type" autocomplete="off" value="AC" checked>AC
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="charge_type" autocomplete="off" value="DC" checked>DC
+                            </label>
+                            </div>    
+                    <!-- </div> -->
     
     <label for="reserve_date">예약 날짜:</label>
     <input type="date" id="reserve_date" name="reserve_date" required /><br>

@@ -31,5 +31,11 @@ public class InfoDAOImpl implements InfoDAO{
 	    
 	    return sqlSession.selectList(namespace + ".myInfoSearch", parameter);
 	}
+	
+	@Override
+	public void deleteReservation(int reserve_id) {
+		sqlSession.delete(namespace +".deleteReservation", reserve_id);
+	}
+	
 
 }

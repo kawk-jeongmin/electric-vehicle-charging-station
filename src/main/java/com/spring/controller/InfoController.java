@@ -36,5 +36,12 @@ public class InfoController {
 		
 		return "myInfo";
 	}
+	
+	@PostMapping("/delete")
+	public String deleteReservation(@RequestParam("reserve_id") int reserve_id) {
+		infoService.deleteReservation(reserve_id);
+		
+		 return "myInfo";
+	}
 }
 

@@ -22,8 +22,8 @@
     <c:set var="hasCurrent" value="false" />
     
     <c:forEach var="myInfo" items="${myInfoList}">
-        <c:choose> <!-- switch문에 해당 -->
-            <c:when test="${myInfo.status eq '과거'}"> <!-- case문에 해당 -->
+        <c:choose> 
+            <c:when test="${myInfo.status eq '과거'}"> 
                 <c:set var="hasPast" value="true" />
             </c:when>
             <c:when test="${myInfo.status eq '미래'}">
@@ -32,20 +32,20 @@
             <c:when test="${myInfo.status eq '현재'}">
                 <c:set var="hasCurrent" value="true" />
             </c:when>
-        </c:choose>
+        </c:choose>55555555
     </c:forEach>
     
     <c:if test="${hasCurrent}">
         <h2>사용중</h2>
-        <table>
+        <table border=1>
             <tr>
-                <th>User Name</th>
-                <th>User Phone</th>
-                <th>Address</th>
-                <th>Charge Type</th>
-                <th>Reserve Date</th>
-                <th>Reserve Time</th>
-                <th>Status</th>
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>주소</th>
+                <th>타입</th>
+                <th>날짜</th>
+                <th>시간</th>
+                <th>남은 시간</th>
             </tr>
             <c:forEach var="myInfo" items="${myInfoList}">
                 <c:if test="${myInfo.status eq '현재'}">
@@ -56,7 +56,7 @@
                         <td>${myInfo['charge_type']}</td>
                         <td>${myInfo['reserve_date']}</td>
                         <td>${myInfo['reserve_time']}</td>
-                        <td>사용중</td>
+                        <td>${myInfo['time_remaining']}</td>
                     </tr>
                 </c:if>
             </c:forEach>
@@ -65,15 +65,15 @@
     
     <c:if test="${hasFuture}">
         <h2>사용 예정</h2>
-        <table>
+        <table border=1>
             <tr>
-                <th>User Name</th>
-                <th>User Phone</th>
-                <th>Address</th>
-                <th>Charge Type</th>
-                <th>Reserve Date</th>
-                <th>Reserve Time</th>
-                <th>Status</th>
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>주소</th>
+                <th>타입</th>
+                <th>날짜</th>
+                <th>시간</th>
+                <th>예약 취소</th>
             </tr>
             <c:forEach var="myInfo" items="${myInfoList}">
                 <c:if test="${myInfo.status eq '미래'}">
@@ -84,7 +84,12 @@
                         <td>${myInfo['charge_type']}</td>
                         <td>${myInfo['reserve_date']}</td>
                         <td>${myInfo['reserve_time']}</td>
-                        <td>사용 예정</td>
+                        <td>
+                        <form action="${pageContext.request.contextPath}/delete" method="post">
+                        <input type="hidden" name="reserve_id" value="${myInfo['reserve_id']}">
+    					<input type="submit" value="예약 취소">
+						</form>
+                		<td>
                     </tr>
                 </c:if>
             </c:forEach>
@@ -93,15 +98,14 @@
     
     <c:if test="${hasPast}">
         <h2>사용 완료</h2>
-        <table>
+        <table border=1>
             <tr>
-                <th>User Name</th>
-                <th>User Phone</th>
-                <th>Address</th>
-                <th>Charge Type</th>
-                <th>Reserve Date</th>
-                <th>Reserve Time</th>
-                <th>Status</th>
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>주소</th>
+                <th>타입</th>
+                <th>날짜</th>
+                <th>시간</th>
             </tr>
             <c:forEach var="myInfo" items="${myInfoList}">
                 <c:if test="${myInfo.status eq '과거'}">
@@ -112,7 +116,6 @@
                         <td>${myInfo['charge_type']}</td>
                         <td>${myInfo['reserve_date']}</td>
                         <td>${myInfo['reserve_time']}</td>
-                        <td>사용 완료</td>
                     </tr>
                 </c:if>
             </c:forEach>
