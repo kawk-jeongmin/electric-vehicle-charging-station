@@ -34,5 +34,4 @@ private static final Logger logger = LoggerFactory.getLogger(MainController.clas
 		
 		return "main";
 	}
-
 }

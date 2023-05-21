@@ -15,7 +15,7 @@
     <button type="submit">Search</button>
 </form>
 <h2>검색 결과</h2>
-                   
+               
 <c:if test="${not empty myInfoList}">
     <c:set var="hasPast" value="false" />
     <c:set var="hasFuture" value="false" />
@@ -32,12 +32,12 @@
             <c:when test="${myInfo.status eq '현재'}">
                 <c:set var="hasCurrent" value="true" />
             </c:when>
-        </c:choose>55555555
+        </c:choose>
     </c:forEach>
     
     <c:if test="${hasCurrent}">
         <h2>사용중</h2>
-        <table border=1>
+       <table id="myTable" class="display">  
             <tr>
                 <th>이름</th>
                 <th>전화번호</th>
@@ -65,7 +65,7 @@
     
     <c:if test="${hasFuture}">
         <h2>사용 예정</h2>
-        <table border=1>
+        <table id="myTable" class="display">
             <tr>
                 <th>이름</th>
                 <th>전화번호</th>
@@ -73,7 +73,7 @@
                 <th>타입</th>
                 <th>날짜</th>
                 <th>시간</th>
-                <th>예약 취소</th>
+                <!-- <th>예약 취소</th> -->
             </tr>
             <c:forEach var="myInfo" items="${myInfoList}">
                 <c:if test="${myInfo.status eq '미래'}">
@@ -98,7 +98,8 @@
     
     <c:if test="${hasPast}">
         <h2>사용 완료</h2>
-        <table border=1>
+        <table id="myTable" class="display">
+        
             <tr>
                 <th>이름</th>
                 <th>전화번호</th>
@@ -132,5 +133,32 @@
 <button type="submit" class="btn btn-primary">홈으로 돌아가기</button>
 </div>
 </form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#myTable').DataTable({
+    	columns: [
+    	    { data: 'user_name' },
+    	    { data: 'user_phone' },
+    	    { data: 'address' },
+    	    { data: 'charge_type' },
+    	    { data: 'reserve_date' },
+    	    { data: 'reserve_time' }
+    	  ],
+    	  
+    	  pageLength: 3,
+          bPaginate: true,
+          bLengthChange: true,
+          lengthMenu : [ [ 3, 5, 10, -1 ], [ 3, 5, 10, "All" ] ],
+          bAutoWidth: false,
+          processing: true,
+          ordering: true,
+          serverSide: false,
+          searching: true
+    });
+  });
+</script>
 </body>
 </html>

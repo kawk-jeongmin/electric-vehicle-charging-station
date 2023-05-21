@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.spring.service.InfoServiceImpl;
 
 @Controller
@@ -24,7 +23,7 @@ public class InfoController {
 	}
 	
 	@GetMapping("/myInfoSearch")
-	public String search(@RequestParam("reserve_name") String reserve_name, @RequestParam("reserve_phone") String reserve_phone, Model model) {
+	public String search(@RequestParam("reserve_name") String reserve_name, @RequestParam("reserve_phone") String reserve_phone, Model model) throws Exception {
 		List<Map<String, Object>> myInfoList = infoService.myInfoSearch(reserve_name, reserve_phone);
 	    
 		if (myInfoList.isEmpty()) {
@@ -36,6 +35,7 @@ public class InfoController {
 		
 		return "myInfo";
 	}
+	
 	
 	@PostMapping("/delete")
 	public String deleteReservation(@RequestParam("reserve_id") int reserve_id) {
