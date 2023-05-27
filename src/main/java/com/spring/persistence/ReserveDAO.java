@@ -6,6 +6,4 @@ public interface ReserveDAO {
 	
 	public void insertReservation(ReserveVO resereVO);
 	
-	
-
 }

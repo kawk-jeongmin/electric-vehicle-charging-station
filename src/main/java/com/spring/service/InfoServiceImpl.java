@@ -27,6 +27,8 @@ public class InfoServiceImpl implements InfoService{
 	    List<ReserveVO> searchResult = infoDAO.myInfoSearch(reserve_name, reserve_phone);
 	    for (ReserveVO reserveVO : searchResult) {
 	        Map<String, Object> myInfo = new HashMap<>();
+	        myInfo.put("loc_id",reserveVO.getLoc_id());
+	        myInfo.put("loc_name",reserveVO.getLoc_name());
 	        myInfo.put("reserve_id",reserveVO.getReserve_id());
 	        myInfo.put("user_name", reserveVO.getUser_name());
 	        myInfo.put("user_phone", reserveVO.getUser_phone());
