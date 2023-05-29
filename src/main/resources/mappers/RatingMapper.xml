@@ -9,4 +9,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	INSERT INTO rating (rate_score, rate_content, rate_img, rate_date, reserve_id, loc_id, loc_name, address, charge_type, user_name, user_phone)
 	VALUES (#{rate_score}, #{rate_content}, #{rate_img}, #{rate_date}, #{reserve_id}, #{loc_id}, #{loc_name}, #{address}, #{charge_type}, #{user_name}, #{user_phone})
 </insert>
+
+<select id="selectRate" resultType="RatingVO">
+	SELECT loc_id, rate_score, rate_content, rate_img, rate_date, loc_name, charge_type, user_name
+	FROM rating
+	WHERE loc_id = #{loc_id}
+</select>
+
+<select id="existRate" resultType="boolean">
+	SELECT COUNT(*) FROM rating WHERE reserve_id = #{reserve_id}
+</select>
 </mapper>

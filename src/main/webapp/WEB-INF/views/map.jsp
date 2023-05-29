@@ -68,10 +68,8 @@
             </form>
           </td>
           <td>
-            <form method="post" action="${pageContext.request.contextPath}/rating" accept-charset="UTF-8">
+            <form method="get" action="${pageContext.request.contextPath}/ratingView/{loc_id}" accept-charset="UTF-8">
               <input type="hidden" name="loc_id" value="${locInfo.loc_id}" />
-              <input type="hidden" name="loc_name" value="${locInfo.loc_name}" />
-              <input type="hidden" name="address" value="${locInfo.address}" />
               <input type="submit" value="후기보기" />
             </form>
           </td>

@@ -142,11 +142,9 @@
         </table>
     </c:if>
 </c:if>
-
 <c:if test="${empty myInfoList}">
     <p>${errorMessage}</p>
 </c:if>
-
 <form action="${pageContext.request.contextPath}/map">
 <div class="box-footer">
 <button type="submit" class="btn btn-primary">홈으로 돌아가기</button>

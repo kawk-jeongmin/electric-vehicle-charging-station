@@ -1,5 +1,7 @@
 package com.spring.persistence;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,16 @@ public class RatingDAOImpl implements RatingDAO{
     @Override
     public void insertRate(RatingVO ratingVO) {
         sqlSession.insert(namespace + ".insertRate", ratingVO);
+    }
+    
+    @Override
+    public List<RatingVO> selectRate(int loc_id){
+    	return sqlSession.selectList(namespace + ".selectRate", loc_id);
+    }
+    
+    @Override
+    public boolean existRate(int reserve_id) {
+    	return sqlSession.selectOne(namespace + ".existRate", reserve_id);
     }
 
 }
