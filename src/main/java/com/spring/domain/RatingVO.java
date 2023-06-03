@@ -93,7 +93,6 @@ public class RatingVO {
 	public void setUser_phone(String user_phone) {
 		this.user_phone = user_phone;
 	}
-	
 	@Override
 	public String toString() {
 		return "RatingVO [rate_id=" + rate_id + ", rate_score=" + rate_score + ", rate_content=" + rate_content
@@ -101,5 +100,6 @@ public class RatingVO {
 				+ loc_id + ", loc_name=" + loc_name + ", address=" + address + ", charge_type=" + charge_type
 				+ ", user_name=" + user_name + ", user_phone=" + user_phone + "]";
 	}
-
+	
+	
 }

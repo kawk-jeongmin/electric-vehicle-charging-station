@@ -125,16 +125,23 @@
                         <td>${myInfo['reserve_date']}</td>
                         <td>${myInfo['reserve_time']}</td>
                         <td>
-                        <form action="${pageContext.request.contextPath}/rating" method="Post" >
-                        <input type="hidden" name="reserve_id" value="${myInfo['reserve_id']}" />
-              			<input type="hidden" name="loc_id" value="${myInfo['loc_id']}" />
-              			<input type="hidden" name="loc_name" value="${myInfo['loc_name']}" />
-              			<input type="hidden" name="address" value="${myInfo['address']}" />
-              			<input type="hidden" name="charge_type" value="${myInfo['charge_type']}" />
-              			<input type="hidden" name="user_name" value="${myInfo['user_name']}"/>
-              			<input type="hidden" name="user_phone" value="${myInfo['user_phone']}" />
-              			<input type="submit" value="후기쓰기" />
-            			</form>
+                                <form action="${pageContext.request.contextPath}/rating" method="post">
+                                    <input type="hidden" name="reserve_id" value="${myInfo['reserve_id']}" />
+                                    <input type="hidden" name="loc_id" value="${myInfo['loc_id']}" />
+                                    <input type="hidden" name="loc_name" value="${myInfo['loc_name']}" />
+                                    <input type="hidden" name="address" value="${myInfo['address']}" />
+                                    <input type="hidden" name="charge_type" value="${myInfo['charge_type']}" />
+                                    <input type="hidden" name="user_name" value="${myInfo['user_name']}" />
+                                    <input type="hidden" name="user_phone" value="${myInfo['user_phone']}" />
+                                    <c:choose>
+                                    <c:when test="${hasReview}">
+                                    <p>${hasReview}</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                    <p>후기 작성 가능</p>
+                                    </c:otherwise>
+                                    </c:choose>
+                                </form>
           				</td>
                     </tr>
                 </c:if>
@@ -144,6 +151,9 @@
 </c:if>
 <c:if test="${empty myInfoList}">
     <p>${errorMessage}</p>
+</c:if>
+<c:if test="${hasReview}">
+<p>끄악</p>
 </c:if>
 <form action="${pageContext.request.contextPath}/map">
 <div class="box-footer">

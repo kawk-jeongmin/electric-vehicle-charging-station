@@ -39,12 +39,14 @@
 		<textarea class="col-auto form-control" name="rate_content" id="reviewContents"
 				  placeholder="후기를 작성해주세요"></textarea>
 	</div>
-	<input type="file" name="rate_img" class="form-control"><br>
-	<input type="hidden" name="rate_date" id="now_date"/>
+	<div>
+    <input type="file" name="rate_img" class="form-control">
+   </div>
+	<input type="hidden" name="rate_date"/>
 	<input type="submit" value="작성완료"/>
 </form>
-<script>
+<!-- <script>
 document.getElementById('now_date').valueAsDate = new Date();
-</script>		
+</script>	 -->	
 </body>
 </html>

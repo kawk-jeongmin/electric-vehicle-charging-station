@@ -28,7 +28,8 @@ public class RatingDAOImpl implements RatingDAO{
     
     @Override
     public boolean existRate(int reserve_id) {
-    	return sqlSession.selectOne(namespace + ".existRate", reserve_id);
+    	int count = sqlSession.selectOne(namespace + ".existRate", reserve_id);
+    	return count > 0;
     }
 
 }

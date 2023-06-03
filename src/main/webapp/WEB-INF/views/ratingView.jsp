@@ -32,5 +32,16 @@
 <button type="submit" class="btn btn-primary">홈으로 돌아가기</button>
 </div>
 </form>
+<form action="${pageContext.request.contextPath}/myInfo" method="post">
+<div class="box-footer">
+<button type="submit" class="btn btn-primary">돌아가기</button>
+</div>
+</form>
+<button onclick="goBack()">이전 페이지로 돌아가기</button>
+<script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>

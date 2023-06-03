@@ -56,10 +56,11 @@ public class RatingController {
 		
 		boolean hasReview = ratingService.existRate(reserve_id);
 		if(hasReview) {
-			model.addAttribute("existMessage", "후기 작성 완료");
+			model.addAttribute("hasReview","후기 작성 완료");
+
 			return "myInfo";
 		}
-		
+
 		RatingVO ratingVO = new RatingVO();
 		ratingVO.setReserve_id(reserve_id);
 		ratingVO.setLoc_id(loc_id);
@@ -71,7 +72,7 @@ public class RatingController {
 		ratingVO.setRate_score(rate_score);
 		ratingVO.setRate_content(rate_content);
 		ratingVO.setRate_img(rate_img);
-		
+	    
 		ratingService.insertRate(ratingVO);
 		
 		

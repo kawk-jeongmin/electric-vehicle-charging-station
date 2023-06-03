@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE loc_id = #{loc_id}
 </select>
 
-<select id="existRate" resultType="boolean">
+<select id="existRate" resultType="int">
 	SELECT COUNT(*) FROM rating WHERE reserve_id = #{reserve_id}
 </select>
 </mapper>
